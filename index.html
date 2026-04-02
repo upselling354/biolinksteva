@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Steva Rizqi P. — Property Marketing & AI Strategist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0a0a12 0%, #111827 40%, #0d1a2e 100%);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px 16px 60px;
+      font-family: 'DM Sans', sans-serif;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: -180px; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(99,179,237,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: -100px; right: -100px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(246,173,85,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 440px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .profile-section {
+      text-align: center;
+      margin-bottom: 32px;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .avatar-ring {
+      display: inline-block;
+      padding: 3px;
+      background: linear-gradient(135deg, #63b3ed, #f6ad55, #fc8181);
+      border-radius: 50%;
+      margin-bottom: 16px;
+    }
+
+    .avatar {
+      width: 88px; height: 88px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #bee3f8;
+      border: 3px solid #0a0a12;
+      letter-spacing: -1px;
+    }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(99,179,237,0.12);
+      border: 1px solid rgba(99,179,237,0.3);
+      color: #90cdf4;
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .badge-dot {
+      width: 6px; height: 6px;
+      background: #68d391;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    .profile-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: #f7fafc;
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+
+    .profile-title {
+      font-size: 13px;
+      font-weight: 400;
+      color: #90cdf4;
+      letter-spacing: 0.5px;
+      margin-bottom: 14px;
+    }
+
+    .bio-text {
+      font-size: 13.5px;
+      color: #a0aec0;
+      line-height: 1.7;
+      max-width: 360px;
+      margin: 0 auto 20px;
+    }
+
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 28px;
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+
+    .stat { text-align: center; }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #f6ad55;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: #718096;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 3px;
+    }
+
+    .stat-divider {
+      width: 1px;
+      background: rgba(255,255,255,0.1);
+      align-self: stretch;
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 500;
+      color: #4a5568;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+      padding-left: 2px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+
+    .service-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 14px 13px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .service-card:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(99,179,237,0.25);
+      transform: translateY(-2px);
+    }
+
+    .service-card:hover::before { opacity: 1; }
+
+    .sc1::before { background: linear-gradient(90deg, #63b3ed, #4299e1); }
+    .sc2::before { background: linear-gradient(90deg, #f6ad55, #ed8936); }
+    .sc3::before { background: linear-gradient(90deg, #9f7aea, #805ad5); }
+    .sc4::before { background: linear-gradient(90deg, #68d391, #48bb78); }
+    .sc5::before { background: linear-gradient(90deg, #fc8181, #f56565); }
+
+    .service-icon {
+      font-size: 18px;
+      margin-bottom: 7px;
+      display: block;
+    }
+
+    .service-name {
+      font-size: 12px;
+      font-weight: 500;
+      color: #e2e8f0;
+      line-height: 1.4;
+    }
+
+    .service-card.wide { grid-column: span 2; }
+
+    .links-section {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      animation: fadeUp 0.7s 0.3s ease both;
+    }
+
+    .link-btn {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 14px 18px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .link-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(99,179,237,0.08), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .link-btn:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(99,179,237,0.3);
+      transform: translateX(4px);
+    }
+
+    .link-btn:hover::after { opacity: 1; }
+
+    .link-btn.cta-main {
+      background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+      border-color: transparent;
+      box-shadow: 0 8px 24px rgba(37,211,102,0.2);
+    }
+
+    .link-btn.cta-main:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(37,211,102,0.3);
+      background: linear-gradient(135deg, #2ee874 0%, #16a085 100%);
+    }
+
+    .link-btn.cta-main::after { display: none; }
+
+    .link-icon {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .link-btn.cta-main .link-icon { background: rgba(255,255,255,0.2); }
+
+    .link-content { flex: 1; }
+
+    .link-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: #f7fafc;
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+
+    .link-sub {
+      font-size: 11px;
+      color: #718096;
+    }
+
+    .link-btn.cta-main .link-sub { color: rgba(255,255,255,0.7); }
+
+    .link-arrow {
+      font-size: 14px;
+      color: #4a5568;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .link-btn:hover .link-arrow { transform: translateX(3px); color: #90cdf4; }
+    .link-btn.cta-main .link-arrow { color: rgba(255,255,255,0.8); }
+
+    .divider {
+      height: 1px;
+      background: rgba(255,255,255,0.07);
+      margin: 20px 0;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 28px;
+      animation: fadeUp 0.7s 0.4s ease both;
+    }
+
+    .footer-text {
+      font-size: 11px;
+      color: #2d3748;
+      letter-spacing: 0.5px;
+    }
+
+    .founder-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(159,122,234,0.1);
+      border: 1px solid rgba(159,122,234,0.2);
+      color: #b794f4;
+      font-size: 11px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-top: 10px;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+
+    <div class="profile-section">
+      <div class="avatar-ring">
+        <div class="avatar">SR</div>
+      </div>
+      <div>
+        <div class="badge">
+          <span class="badge-dot"></span>
+          Open for konsultasi
+        </div>
+      </div>
+      <div class="profile-name">Steva Rizqi P.</div>
+      <div class="profile-title">Property Marketing &amp; AI Strategist</div>
+      <p class="bio-text">
+        Membantu Developer &amp; Agen Properti jual lebih cepat dengan AI &amp; Digital Ads 🏠 — 8 Proyek Developer sukses. DM untuk konsultasi.
+      </p>
+      <div class="founder-tag">🏢 Founder · Disaproplus</div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-num">8+</div>
+        <div class="stat-label">Proyek Developer</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-num">AI</div>
+        <div class="stat-label">Driven Strategy</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-num">Meta</div>
+        <div class="stat-label">Ads Specialist</div>
+      </div>
+    </div>
+
+    <div class="section-label">Layanan</div>
+
+    <div class="services-grid">
+      <div class="service-card sc1">
+        <span class="service-icon">🎯</span>
+        <div class="service-name">Konsultasi Marketing Properti</div>
+      </div>
+      <div class="service-card sc2">
+        <span class="service-icon">📣</span>
+        <div class="service-name">Marketing Ads Spesialis Properti</div>
+      </div>
+      <div class="service-card sc3">
+        <span class="service-icon">🛠️</span>
+        <div class="service-name">Template &amp; Tools Marketing</div>
+      </div>
+      <div class="service-card sc4">
+        <span class="service-icon">🎓</span>
+        <div class="service-name">Webinar &amp; Mini Class Meta Ads</div>
+      </div>
+      <div class="service-card sc5 wide">
+        <span class="service-icon">📊</span>
+        <div class="service-name">Analisa / Audit Hasil Meta Ads Properti</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-label">Hubungi &amp; Mulai</div>
+
+    <div class="links-section">
+
+      <a class="link-btn cta-main" href="https://wa.me/6285320093052" target="_blank">
+        <div class="link-icon">💬</div>
+        <div class="link-content">
+          <div class="link-title">Chat via WhatsApp</div>
+          <div class="link-sub">Konsultasi gratis — balas cepat</div>
+        </div>
+        <span class="link-arrow">→</span>
+      </a>
+
+      <a class="link-btn" href="https://wa.me/6285320093052?text=Halo%20Steva%2C%20saya%20ingin%20tahu%20lebih%20lanjut%20tentang%20layanan%20konsultasi%20properti" target="_blank">
+        <div class="link-icon">🏠</div>
+        <div class="link-content">
+          <div class="link-title">Konsultasi Marketing Properti</div>
+          <div class="link-sub">Strategi jual lebih cepat dengan AI</div>
+        </div>
+        <span class="link-arrow">→</span>
+      </a>
+
+      <a class="link-btn" href="https://wa.me/6285320093052?text=Halo%20Steva%2C%20saya%20tertarik%20dengan%20layanan%20Meta%20Ads%20properti" target="_blank">
+        <div class="link-icon">📈</div>
+        <div class="link-content">
+          <div class="link-title">Jasa Meta Ads Properti</div>
+          <div class="link-sub">Iklan properti yang convert &amp; terukur</div>
+        </div>
+        <span class="link-arrow">→</span>
+      </a>
+
+      <a class="link-btn" href="https://wa.me/6285320093052?text=Halo%20Steva%2C%20saya%20ingin%20audit%20iklan%20Meta%20Ads%20properti%20saya" target="_blank">
+        <div class="link-icon">🔍</div>
+        <div class="link-content">
+          <div class="link-title">Audit Iklan Meta Ads</div>
+          <div class="link-sub">Temukan kebocoran &amp; optimasi budget</div>
+        </div>
+        <span class="link-arrow">→</span>
+      </a>
+
+      <a class="link-btn" href="https://wa.me/6285320093052?text=Halo%20Steva%2C%20saya%20tertarik%20dengan%20webinar%20atau%20mini%20class%20Meta%20Ads%20properti" target="_blank">
+        <div class="link-icon">🎓</div>
+        <div class="link-content">
+          <div class="link-title">Webinar &amp; Mini Class</div>
+          <div class="link-sub">Kuasai Meta Ads untuk properti</div>
+        </div>
+        <span class="link-arrow">→</span>
+      </a>
+
+    </div>
+
+    <div class="footer">
+      <div class="footer-text">© 2025 Steva Rizqi P. · Disaproplus</div>
+    </div>
+
+  </div>
+</body>
+</html>
